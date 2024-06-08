@@ -1,0 +1,10 @@
+<div style="width: 50%;">
+    <h2>Delete a Meeting</h2>
+    <ul>
+        <li *ngFor="let meeting of sharedMethodService.meetings" (click)="sharedMethodService.selectedMeeting = meeting"
+            [class.selected]="meeting === sharedMethodService.selectedMeeting">
+            {{meeting.date}} - {{meeting.fromTime}} to {{meeting.toTime}}: {{meeting.agenda}} ({{meeting.username}})
+        </li>
+    </ul>
+    <button (click)="sharedMethodService.deleteMeeting()" [disabled]="!sharedMethodService.selectedMeeting">Delete Selected Meeting</button>
+</div>

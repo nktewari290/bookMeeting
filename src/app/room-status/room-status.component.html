@@ -1,0 +1,19 @@
+<div  style="width: 50%;">
+    <h2>Room Status</h2>
+    <label class="form-label">Date:</label>
+    <input class="form-control" type="date" [(ngModel)]="date" required>
+    <br>
+    <label class="form-label">From Time:</label>
+    <input class="form-control" type="time" [(ngModel)]="fromTime" required>
+    <br>
+    <label class="form-label">To Time:</label>
+    <input class="form-control" type="time" [(ngModel)]="toTime" required>
+    <br>
+    <button class="btn btn-primary" (click)="checkStatus()">Check Status</button>
+    <ul>
+        <li *ngFor="let status of statuses">
+            Room {{status.room}}: {{status.status}}
+            <span *ngIf="status.meeting"> ({{status.meeting.username}} - {{status.meeting.agenda}})</span>
+        </li>
+    </ul>
+</div>

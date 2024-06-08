@@ -1,0 +1,25 @@
+<div  style="width: 50%;">
+    <h2>View Meetings for Room {{room}}</h2>
+    <label class="form-label">Meeting Room:</label>
+    <select class="form-control" [(ngModel)]="room" (change)="getMeetings()">
+      <option *ngFor="let room of [1,2,3,4,5,6,7,8,9,10]" [value]="room">{{room}}</option>
+    </select>
+    <br>
+    <button class="btn btn-primary" (click)="getMeetings()">Get Meetings</button>
+
+    <ng-container *ngIf="sharedMethodService.meetings.length > 0; else noMeetings">
+      <app-delete-meeting></app-delete-meeting>
+      <!-- <ul>
+        <li class="" *ngFor="let meeting of meetings" (click)="sharedMethodService.selectedMeeting = meeting">
+          {{meeting.date}} - {{meeting.fromTime}} to {{meeting.toTime}}: {{meeting.agenda}} ({{meeting.username}})
+        </li>
+      </ul>
+
+      <button class="btn btn-primary" type="button" (click)="sharedMethodService.deleteMeeting()">Delete Booking</button> -->
+    </ng-container>
+
+    <ng-template #noMeetings>
+      <p>No Meetings Booked</p>
+    </ng-template>
+  </div>
+  
